@@ -45,9 +45,6 @@ cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 # update
 apt-get update
 
-# install webserver
-apt-get -y install nginx
-
 # install essential package
 apt-get -y install bmon iftop htop nmap axel nano iptables traceroute sysv-rc-conf dnsutils bc nethogs openvpn vnstat less screen psmisc apt-file whois ptunnel ngrep mtr git zsh mrtg snmp snmpd snmp-mibs-downloader unzip unrar rsyslog debsums rkhunter
 apt-get -y install build-essential
@@ -58,25 +55,6 @@ sysv-rc-conf exim4 off
 
 # update apt-file
 apt-file update
-
-# install figlet
-apt-get install figlet
-echo "clear" >> .bashrc
-echo 'figlet -k "$HOSTNAME"' >> .bashrc
-echo 'echo -e "Selamat datang ke server $HOSTNAME"' >> .bashrc
-echo 'echo -e "Script mod by Aiman Amir"' >> .bashrc
-echo 'echo -e "Taip menu untuk menampilkan senarai perintah yang tersedia"' >> .bashrc
-echo 'echo -e ""' >> .bashrc
-
-# install webserver
-cd
-rm /etc/nginx/sites-enabled/default
-rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.github.com/blazevpn/autoscript/master/nginx.conf"
-mkdir -p /home/vps/public_html
-echo "<pre>Setup by Aiman Amir | 081515292117</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://github.com/blazevpn/autoscript/blob/master/vps.conf"
-service nginx restart
 
 # install openvpn
 wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/blazevpn/autoscript/master/openvpn-debian.tar"
